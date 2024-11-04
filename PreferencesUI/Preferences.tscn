@@ -1,0 +1,179 @@
+[gd_scene load_steps=13 format=3 uid="uid://dkf8ik5f0bkhw"]
+
+[ext_resource type="Script" path="res://PreferencesUI/Scripts/PickBackgroundColorButtonScript.gd" id="1_7saa3"]
+[ext_resource type="Script" path="res://PreferencesUI/Scripts/PreferencesScript.gd" id="1_wjmc8"]
+[ext_resource type="Script" path="res://PreferencesUI/Scripts/PickFontColorButtonScript.gd" id="2_a57pi"]
+[ext_resource type="Script" path="res://PreferencesUI/Scripts/PreferencesBackgroundScript.gd" id="2_ausy6"]
+[ext_resource type="LabelSettings" uid="uid://d4ms71mjv8xae" path="res://PreferencesUI/MenuLabelSettings.tres" id="3_5jtm2"]
+[ext_resource type="Script" path="res://PreferencesUI/Scripts/ColorPickerScript.gd" id="5_6a6jy"]
+[ext_resource type="Script" path="res://PreferencesUI/Scripts/VerseFontSizeTextBoxScripts.gd" id="5_jw81d"]
+[ext_resource type="Script" path="res://PreferencesUI/Scripts/WordsFontSizeContainerScript.gd" id="5_uyhhn"]
+[ext_resource type="Script" path="res://PreferencesUI/Scripts/ColorPickerCloseButtonScript.gd" id="7_2j6xw"]
+[ext_resource type="Script" path="res://PreferencesUI/Scripts/MenuFontSizeTextBoxScripts.gd" id="8_c3b1s"]
+[ext_resource type="Script" path="res://PreferencesUI/Scripts/ClosePreferencesButton.gd" id="8_lmt4w"]
+[ext_resource type="Script" path="res://PreferencesUI/EnglishVersionSetterScript.gd" id="12_l85bd"]
+
+[node name="Preferences" type="PanelContainer"]
+z_index = 100
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -50.5
+offset_right = 110.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 2
+script = ExtResource("1_wjmc8")
+
+[node name="PreferencesBackground" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.238623, 0.239577, 0.171906, 1)
+script = ExtResource("2_ausy6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="BackgroundColorSetter" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+focus_mode = 0
+text = "Pick Background Color"
+script = ExtResource("1_7saa3")
+
+[node name="FontColorSetter" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+focus_mode = 0
+text = "Pick Font Color"
+script = ExtResource("2_a57pi")
+
+[node name="WordsFontSizeSetter" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="WordsFontSizeLabel" type="Label" parent="MarginContainer/VBoxContainer/WordsFontSizeSetter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Words Font Size:"
+label_settings = ExtResource("3_5jtm2")
+
+[node name="WordsFontSizeLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/WordsFontSizeSetter"]
+layout_mode = 2
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+caret_blink = true
+script = ExtResource("5_uyhhn")
+
+[node name="VersesFontSizeSetter" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="VersesFontSizeLabel" type="Label" parent="MarginContainer/VBoxContainer/VersesFontSizeSetter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Verse Font Size:"
+label_settings = ExtResource("3_5jtm2")
+
+[node name="VersesFontSizeLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/VersesFontSizeSetter"]
+layout_mode = 2
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+caret_blink = true
+script = ExtResource("5_jw81d")
+
+[node name="MenuFontSizeSetter" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="MenuFontSizeLabel" type="Label" parent="MarginContainer/VBoxContainer/MenuFontSizeSetter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Menu Font Size:"
+label_settings = ExtResource("3_5jtm2")
+
+[node name="MenuFontSizeLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/MenuFontSizeSetter"]
+layout_mode = 2
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+caret_blink = true
+script = ExtResource("8_c3b1s")
+
+[node name="ColorPicker" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("5_6a6jy")
+
+[node name="ColorPicker2" type="ColorPicker" parent="MarginContainer/VBoxContainer/ColorPicker"]
+z_index = 10
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 2
+mouse_filter = 0
+alignment = 1
+edit_alpha = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="ColorPickerCloseButton" type="Button" parent="MarginContainer/VBoxContainer/ColorPicker"]
+layout_mode = 2
+text = "Close"
+script = ExtResource("7_2j6xw")
+
+[node name="EnglishVersionSetter" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("12_l85bd")
+
+[node name="Prev" type="Button" parent="MarginContainer/VBoxContainer/EnglishVersionSetter"]
+layout_mode = 2
+focus_mode = 0
+text = "<<"
+
+[node name="EnglishVersionLabel" type="Label" parent="MarginContainer/VBoxContainer/EnglishVersionSetter"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "English Version"
+label_settings = ExtResource("3_5jtm2")
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="MarginContainer/VBoxContainer/EnglishVersionSetter"]
+layout_mode = 2
+focus_mode = 0
+text = ">>"
+
+[node name="ClosePreferences" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Close"
+script = ExtResource("8_lmt4w")

@@ -1,0 +1,430 @@
+[gd_scene load_steps=27 format=3 uid="uid://cempcahavodpm"]
+
+[ext_resource type="Script" path="res://Scripts/MainScript.gd" id="1_tv10m"]
+[ext_resource type="LabelSettings" uid="uid://bgs1u856ll1y3" path="res://PreferencesUI/WordsLabelSettings.tres" id="2_cyawv"]
+[ext_resource type="Script" path="res://Scripts/LoadingScreenScript.gd" id="2_jonwf"]
+[ext_resource type="PackedScene" uid="uid://dkf8ik5f0bkhw" path="res://PreferencesUI/Preferences.tscn" id="3_u1bum"]
+[ext_resource type="Script" path="res://Scripts/MainBackgroundScript.gd" id="3_x1q77"]
+[ext_resource type="Script" path="res://Scripts/MessageBackgroundScript.gd" id="4_mwmke"]
+[ext_resource type="LabelSettings" uid="uid://d4ms71mjv8xae" path="res://PreferencesUI/MenuLabelSettings.tres" id="5_dy07p"]
+[ext_resource type="Script" path="res://Scripts/WordsContainerScript.gd" id="6_stq6d"]
+[ext_resource type="Script" path="res://Scripts/BookSetterScript.gd" id="7_nnvqa"]
+[ext_resource type="Script" path="res://Scripts/MessageScript.gd" id="8_cskxx"]
+[ext_resource type="Script" path="res://Scripts/SettingsBackgroundScript.gd" id="8_ebxyo"]
+[ext_resource type="Script" path="res://Scripts/ShowPreferencesButtonScript.gd" id="9_3qrlj"]
+[ext_resource type="Script" path="res://Scripts/WordLimitScript.gd" id="9_hggsm"]
+[ext_resource type="Script" path="res://Scripts/BatchSelectScript.gd" id="10_0mvig"]
+[ext_resource type="Script" path="res://Scripts/ChapterSetterScript.gd" id="10_xnuv5"]
+[ext_resource type="Script" path="res://Scripts/SideSettingsContainerScript.gd" id="11_iiutl"]
+[ext_resource type="Script" path="res://Scripts/SortItSetterScript.gd" id="12_62sw7"]
+[ext_resource type="Script" path="res://Scripts/SortModeSetterScript.gd" id="12_jd25q"]
+[ext_resource type="Script" path="res://Scripts/VerseSetterScript.gd" id="16_py5wk"]
+[ext_resource type="Script" path="res://Scripts/VersesContainerScript.gd" id="17_eaaxa"]
+[ext_resource type="Script" path="res://Scripts/VersesBackgroundScript.gd" id="18_vtmi5"]
+[ext_resource type="LabelSettings" uid="uid://rek4e0sjsntv" path="res://PreferencesUI/VersesLabelSettings.tres" id="18_w8okn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e7hhl"]
+font_size = 20
+font_color = Color(0.639094, 0.45469, 0.138542, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbfsh"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_athej"]
+bg_color = Color(0.393086, 0.393086, 0.393085, 1)
+
+[sub_resource type="Theme" id="Theme_njeu8"]
+
+[node name="Main" type="CanvasLayer"]
+script = ExtResource("1_tv10m")
+
+[node name="LoadingScreen" type="ColorRect" parent="."]
+z_index = 1000
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 2
+mouse_force_pass_scroll_events = false
+color = Color(0.219501, 0.219501, 0.219501, 1)
+script = ExtResource("2_jonwf")
+
+[node name="LoadingScreenLabel" type="Label" parent="LoadingScreen"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.5
+offset_top = -14.0
+offset_right = 16.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading..."
+label_settings = SubResource("LabelSettings_e7hhl")
+
+[node name="ProgressBar" type="ProgressBar" parent="LoadingScreen"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.5
+offset_top = -15.0
+offset_right = 132.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bbfsh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_athej")
+show_percentage = false
+
+[node name="MessageContainer" type="PanelContainer" parent="."]
+z_index = 900
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -20.0
+offset_right = 33.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_cskxx")
+
+[node name="MessageBackground" type="ColorRect" parent="MessageContainer"]
+layout_mode = 2
+color = Color(0.210081, 0.20131, 0.177694, 1)
+script = ExtResource("4_mwmke")
+
+[node name="MarginContainer" type="MarginContainer" parent="MessageContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="MessageLabel" type="Label" parent="MessageContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "ERROR"
+label_settings = ExtResource("5_dy07p")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+script = ExtResource("3_x1q77")
+
+[node name="Words" type="VBoxContainer" parent="."]
+offset_left = 10.0
+offset_right = 710.0
+offset_bottom = 344.0
+focus_mode = 2
+mouse_filter = 0
+script = ExtResource("6_stq6d")
+
+[node name="WordLabel1" type="Label" parent="Words"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Greek Word
+"
+label_settings = ExtResource("2_cyawv")
+autowrap_mode = 3
+
+[node name="WordLabel2" type="Label" parent="Words"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Romanized Version
+"
+label_settings = ExtResource("2_cyawv")
+autowrap_mode = 3
+
+[node name="WordLabel3" type="Label" parent="Words"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Modern Equivalent"
+label_settings = ExtResource("2_cyawv")
+autowrap_mode = 3
+
+[node name="WordLabel4" type="Label" parent="Words"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "English Translation"
+label_settings = ExtResource("2_cyawv")
+autowrap_mode = 3
+
+[node name="Gap" type="Control" parent="Words"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="WordLabel5" type="Label" parent="Words"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Description"
+label_settings = ExtResource("2_cyawv")
+autowrap_mode = 3
+
+[node name="SettingsContainer" type="PanelContainer" parent="."]
+visible = false
+z_index = 100
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -242.0
+offset_top = 54.0
+offset_right = -21.0
+offset_bottom = 155.0
+grow_horizontal = 0
+script = ExtResource("11_iiutl")
+
+[node name="SettingsBackground" type="ColorRect" parent="SettingsContainer"]
+z_index = -1
+layout_mode = 2
+color = Color(0.194349, 0.194349, 0.194349, 1)
+script = ExtResource("8_ebxyo")
+
+[node name="SideSettings" type="VBoxContainer" parent="SettingsContainer"]
+layout_mode = 2
+
+[node name="ShowPreferences" type="Button" parent="SettingsContainer/SideSettings"]
+layout_mode = 2
+text = "Preferences"
+script = ExtResource("9_3qrlj")
+
+[node name="BookSetter" type="HBoxContainer" parent="SettingsContainer/SideSettings"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("7_nnvqa")
+
+[node name="Prev" type="Button" parent="SettingsContainer/SideSettings/BookSetter"]
+layout_mode = 2
+focus_mode = 0
+text = "<<"
+
+[node name="BookName" type="Label" parent="SettingsContainer/SideSettings/BookSetter"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SwitchMode"
+label_settings = ExtResource("5_dy07p")
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="SettingsContainer/SideSettings/BookSetter"]
+layout_mode = 2
+focus_mode = 0
+text = ">>"
+
+[node name="SortModeSetter" type="HBoxContainer" parent="SettingsContainer/SideSettings"]
+visible = false
+layout_mode = 2
+alignment = 1
+script = ExtResource("12_jd25q")
+
+[node name="Prev" type="Button" parent="SettingsContainer/SideSettings/SortModeSetter"]
+layout_mode = 2
+focus_mode = 0
+text = "<<"
+
+[node name="SortLabel" type="Label" parent="SettingsContainer/SideSettings/SortModeSetter"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "All Words In Chapter"
+label_settings = ExtResource("5_dy07p")
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="SettingsContainer/SideSettings/SortModeSetter"]
+layout_mode = 2
+focus_mode = 0
+text = ">>"
+
+[node name="ChapterSetter" type="HBoxContainer" parent="SettingsContainer/SideSettings"]
+visible = false
+layout_mode = 2
+alignment = 1
+script = ExtResource("10_xnuv5")
+
+[node name="Prev" type="Button" parent="SettingsContainer/SideSettings/ChapterSetter"]
+layout_mode = 2
+focus_mode = 0
+text = "<<"
+
+[node name="ChapterLabel" type="Label" parent="SettingsContainer/SideSettings/ChapterSetter"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Chapter 1"
+label_settings = ExtResource("5_dy07p")
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="SettingsContainer/SideSettings/ChapterSetter"]
+layout_mode = 2
+focus_mode = 0
+text = ">>"
+
+[node name="SortItSetter" type="HBoxContainer" parent="SettingsContainer/SideSettings"]
+visible = false
+layout_mode = 2
+alignment = 1
+script = ExtResource("12_62sw7")
+
+[node name="Prev" type="Button" parent="SettingsContainer/SideSettings/SortItSetter"]
+layout_mode = 2
+focus_mode = 0
+text = "<<"
+
+[node name="SortLabel" type="Label" parent="SettingsContainer/SideSettings/SortItSetter"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "All Words In Chapter"
+label_settings = ExtResource("5_dy07p")
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="SettingsContainer/SideSettings/SortItSetter"]
+layout_mode = 2
+focus_mode = 0
+text = ">>"
+
+[node name="WordLimitSetter" type="HBoxContainer" parent="SettingsContainer/SideSettings"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("9_hggsm")
+
+[node name="Prev" type="Button" parent="SettingsContainer/SideSettings/WordLimitSetter"]
+layout_mode = 2
+focus_mode = 0
+text = "<<"
+
+[node name="WordLimitLabel" type="Label" parent="SettingsContainer/SideSettings/WordLimitSetter"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "WordLimit"
+label_settings = ExtResource("5_dy07p")
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="SettingsContainer/SideSettings/WordLimitSetter"]
+layout_mode = 2
+focus_mode = 0
+text = ">>"
+
+[node name="BatchSetter" type="HBoxContainer" parent="SettingsContainer/SideSettings"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("10_0mvig")
+
+[node name="Prev" type="Button" parent="SettingsContainer/SideSettings/BatchSetter"]
+layout_mode = 2
+focus_mode = 0
+text = "<<"
+
+[node name="BatchLabel" type="Label" parent="SettingsContainer/SideSettings/BatchSetter"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Batch"
+label_settings = ExtResource("5_dy07p")
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="SettingsContainer/SideSettings/BatchSetter"]
+layout_mode = 2
+focus_mode = 0
+text = ">>"
+
+[node name="VerseSetter" type="HBoxContainer" parent="SettingsContainer/SideSettings"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("16_py5wk")
+
+[node name="Prev" type="Button" parent="SettingsContainer/SideSettings/VerseSetter"]
+layout_mode = 2
+focus_mode = 0
+text = "<<"
+
+[node name="VerseLabel" type="Label" parent="SettingsContainer/SideSettings/VerseSetter"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Verse 1"
+label_settings = ExtResource("5_dy07p")
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="SettingsContainer/SideSettings/VerseSetter"]
+layout_mode = 2
+focus_mode = 0
+text = ">>"
+
+[node name="VersesContainer" type="PanelContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+script = ExtResource("17_eaaxa")
+
+[node name="VersesBackground" type="ColorRect" parent="VersesContainer"]
+layout_mode = 2
+color = Color(0.20871, 0.20871, 0.20871, 1)
+script = ExtResource("18_vtmi5")
+
+[node name="MarginContainer" type="MarginContainer" parent="VersesContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VersesVBox" type="VBoxContainer" parent="VersesContainer/MarginContainer"]
+z_index = 5
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_njeu8")
+
+[node name="English" type="Label" parent="VersesContainer/MarginContainer/VersesVBox"]
+z_index = 10
+z_as_relative = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+text = "English sentence
+"
+label_settings = ExtResource("18_w8okn")
+autowrap_mode = 3
+
+[node name="GreekVerseContainer" type="HFlowContainer" parent="VersesContainer/MarginContainer/VersesVBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VersesContainer/MarginContainer/VersesVBox/GreekVerseContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Preferences" parent="." instance=ExtResource("3_u1bum")]
+unique_name_in_owner = true
+visible = false
+z_index = 200
+offset_top = -85.5
+offset_bottom = 85.5
